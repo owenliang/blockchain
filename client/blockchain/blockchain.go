@@ -10,9 +10,9 @@ type Block struct {
 	Index      int    // 区块链中的第几块（从0开始递增）
 	Timestamp  string // 时间字符串（格式要求：2021-03-15 03:15:30）
 	Content    string // 区块内容（用户想保存到链上的内容）
-	Hash       string // 区块哈希（Index+Timestamp+Content+PrevHash+Difficulty+Nonce做DoubleSha256）
-	PrevHash   string // 前一个区块的哈希（取自前一个区块）
-	Difficulty int    // 满足几个前导0（取自全局变量）
+	Hash       string // 区块哈希（Index+Timestamp+Content+PrevHash+Difficulty+Nonce做DoubleSha256），提示：+表示连接它们，不是真的加号
+	PrevHash   string // 前一个区块的哈希（取自前一个区块的Hash字段）
+	Difficulty int    // 满足几个前导0
 	Nonce      string // 碰撞随机值（任意值）
 }
 
