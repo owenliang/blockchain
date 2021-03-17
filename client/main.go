@@ -60,12 +60,12 @@ func FetchLatestBlock(address string) (block *blockchain.Block, err error) {
 // 《作业B》：实现挖矿函数，传入前一个Block，循环计算直到挖出下一个Block
 func MiningBlock(prevBlock *blockchain.Block, content string) (newBlock *blockchain.Block) {
 	// 服务端会校验提交Block的如下信息：
-	// 1，Index
+	// 1，Index：上一个Block的Index+1
 	// 2，Timestamp：注意格式
-	// 3，Hash：必须正确
+	// 3，Hash：必须正确，计算方法：Index+Timestamp+Content+PrevHash+Difficulty+Nonce做DoubleSha256
 	// 4，PrevHash：必须是Index-1区块的Hash
-	// 5，Difficulty：如果该Index是偶数，那么Difficulty设置2（意味着你的Hash需要有2个前导0），否则Difficulty设置为3（意味着你的Hash需要有3个前导0）
-	// 6，Nonce：随意内容，会参与Hash值计算校验
+	// 5，Difficulty：如果该Index是偶数，那么Difficulty设置5（意味着你的Hash需要有5个前导0），否则Difficulty设置为6（意味着你的Hash需要有6个前导0），你的Hash值必须符合这个要求
+	// 6，Nonce：随意内容，你需要调整它来用来碰撞到符合要求的Hash值
 	return
 }
 
