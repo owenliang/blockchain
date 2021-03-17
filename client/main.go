@@ -57,7 +57,7 @@ func FetchLatestBlock(address string) (block *blockchain.Block, err error) {
 	return
 }
 
-// 《作业B》：实现挖矿函数，传入前一个Block，循环计算直到挖出下一个Block
+// 《作业C》：实现挖矿函数，传入前一个Block，循环计算直到挖出下一个Block
 func MiningBlock(prevBlock *blockchain.Block, content string) (newBlock *blockchain.Block) {
 	// 服务端会校验提交Block的如下信息：
 	// 1，Index：上一个Block的Index+1
