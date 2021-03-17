@@ -8,6 +8,7 @@ import (
 	"os"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/owenliang/blockchain/server/blockchain"
 )
@@ -47,6 +48,11 @@ func ValidateBlock(prevBlock *blockchain.Block, newBlock *blockchain.Block) (err
 	// 区块已被提交
 	if newBlock.Index != prevBlock.Index+1 {
 		err = fmt.Errorf("该区块已被别人提交, 索引=%v", newBlock.Index)
+		return
+	}
+	// 时间字段格式检测
+	if _, err = time.Parse("2006-01-02 15:04:05", newBlock.Timestamp); err != nil {
+		err = fmt.Errorf("该区块的Timestamp错误，请检查一下格式：%v", err.Error())
 		return
 	}
 	// Difficulty检查
